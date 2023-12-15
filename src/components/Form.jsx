@@ -92,7 +92,7 @@ function Form() {
         return <Message_1.default message="click anywhere"/>;
     if (geocodingError)
         return <Message_1.default message={geocodingError}/>;
-    return (<form className={`${Form_module_css_1.default.form} ${isLoading ? Form_module_css_1.default.loading : ""}`} onSubmit={handleSubmit}>
+    return (<form className={`${Form_module_css_1.default.form} ${isLoading ? Form_module_css_1.default.loading : ""}`} onSubmit={(e) => handleSubmit}>
       <div className={Form_module_css_1.default.row}>
         <label htmlFor="cityName">City name</label>
         <input id="cityName" onChange={(e) => setCityName(e.target.value)} value={cityName}/>

@@ -14,7 +14,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useCities } from "../contexts/CitiesContext";
 import { useNavigate } from "react-router-dom";
 
-export function convertToEmoji(countryCode) {
+export function convertToEmoji(countryCode:string) {
   const codePoints = countryCode
     .toUpperCase()
     .split("")
@@ -54,7 +54,7 @@ function Form() {
         setCityName(data.city || data.locality || "")
         setCountry(data.countryName)
         setEmoji(convertToEmoji(data.countryCode))
-      }catch(err){
+      }catch(err:any){
         setGeocodingError(err.message)
       }finally{
         setLoadingGeocoding(false)
@@ -63,7 +63,7 @@ function Form() {
     fetchCityDate()
   }, [lat,lng])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:Event) => {
     e.preventDefault();
 
     if(!cityName || !date) return;
@@ -87,7 +87,7 @@ function Form() {
   if (geocodingError) return <Message message={geocodingError}/>
 
   return (
-    <form className={`${styles.form} ${isLoading ? styles.loading : ""}`} onSubmit={handleSubmit}>
+    <form className={`${styles.form} ${isLoading ? styles.loading : ""}`} onSubmit={(e)=>handleSubmit}>
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
@@ -105,7 +105,7 @@ function Form() {
           onChange={(e) => setDate(e.target.value)}
           value={date}
         /> */}
-          <DatePicker id="date" onChange={(date) => setDate(date)} selected={date} dateFormat='dd/MM/yyyy'/>
+          <DatePicker id="date" onChange={(date:string) => setDate(date)} selected={date} dateFormat='dd/MM/yyyy'/>
       </div>
 
       <div className={styles.row}>

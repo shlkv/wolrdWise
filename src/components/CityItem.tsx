@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css"
 import { useCities } from "../contexts/CitiesContext";
+import React from "react";
 
 
 const formatDate = (date:string) =>
@@ -11,6 +12,10 @@ const formatDate = (date:string) =>
   }).format(new Date(date));
 
 type CityItemType = {
+  currentCity:{
+    id:string,
+  }
+  deleteCity: Function,
   city:{
     cityName: string,
     emoji: string,
@@ -20,15 +25,10 @@ type CityItemType = {
       lng:string,
       lat:string
       }
-    }
-  currentCity:{
-    id:string,
-
-  }
-  deleteCity: Function
+    },
 }
 
-export default function CityItem({ city }:CityItemType) {
+export default function CityItem({ city }:CityItemType): React.JSX.Element {
   const { cityName, emoji, date, id, position } = city
   const {currentCity, deleteCity}:CityItemType = useCities()
 

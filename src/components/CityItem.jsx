@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_router_dom_1 = require("react-router-dom");
 const CityItem_module_css_1 = __importDefault(require("./CityItem.module.css"));
 const CitiesContext_1 = require("../contexts/CitiesContext");
+const react_1 = __importDefault(require("react"));
 const formatDate = (date) => new Intl.DateTimeFormat("en", {
     day: "numeric",
     month: "long",
